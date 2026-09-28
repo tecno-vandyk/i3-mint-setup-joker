@@ -5,3 +5,63 @@ Linux Mint i3wm ("Joker" Purple Theme)  ¡Bienvenido a mi configuración persona
 <img width="1366" height="768" alt="2026-09-24-20:52:15-screenshot" src="https://github.com/user-attachments/assets/2f54bfae-3fc3-4990-9975-48f35eacbcd8" />
 
 -----------------------------------------------------------------------------------------------------------------------
+# joker i3WM vandyk
+
+Requisito previo: Probado y montado en Linux Mint 22.3 x86_64 (XFCE), pero es 100% compatible con cualquier versión de Linux Mint, Ubuntu, Debian o sus derivados.
+
+# Actualizar los repositorios e índices del sistema
+
+sudo apt update && sudo apt upgrade -y
+
+# Instalacion de i3-WM y todas las aplicaciones nesesarias 
+
+sudo apt install -y i3 i3status picom feh rofi dmenu xfce4-screenshooter scrot i3lock xss-lock dex network-manager-gnome pulseaudio-utils zsh cava cmatrix neofetch htop celluloid thunar gnome-calculator lxappearance xed
+
+-Lista de aplicaciones:
+    i3 / i3-wm: El gestor de ventanas principal (Tiling Window Manager).
+
+    i3status: La barra de estado en la parte inferior de la pantalla.
+
+    picom: Compositor gráfico para transparencias, sombras y esquinas redondeadas.
+
+    feh: Herramienta ligera para cargar y gestionar el fondo de pantalla (joker.jpg).
+
+    rofi: Lanzador de aplicaciones e interfaz para menús interactivos (Mod + Shift + D).
+
+    dmenu: Lanzador de comandos alternativo minimalista (Mod + D).
+
+    xfce4-screenshooter: Herramienta de capturas de pantalla interactiva (Mod + Print).
+
+    scrot: Capturador de pantalla en segundo plano rápido (Mod + Shift + Print).
+
+    i3lock: Sistema de bloqueo de pantalla (Mod + L).
+
+    xss-lock: Gestor de bloqueo automático cuando el equipo entra en suspensión.
+
+    dex: Gestor de autoinicio para aplicaciones del sistema .desktop.
+
+    network-manager-gnome (nm-applet): Applet de red en la bandeja del sistema (Wi-Fi/Cable).
+
+    pulseaudio-utils (pactl): Controladores para gestionar el volumen del audio mediante atajos.
+
+    zsh: La shell avanzada que usas en la terminal.
+
+    cava: Visualizador de audio en la terminal (Mod + F6).
+
+    cmatrix: Efecto visual de lluvia de código Matrix (Mod + F7).
+
+    neofetch / fastfetch: Información del sistema mostrada al abrir la terminal.
+
+    htop: Monitor de procesos del sistema.
+
+    celluloid: Reproductor multimedia predeterminado de Linux Mint (Mod + F5).
+
+    thunar: Administrador de archivos gráfico (Mod + B).
+
+    gnome-calculator: Calculadora del sistema (Mod + F3).
+
+    lxappearance: Gestor para personalizar temas e íconos GTK (Mod + Shift + F9).
+
+    xed: Editor de texto ligero de Linux Mint (Mod + F1).
+
+    
