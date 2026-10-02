@@ -64,4 +64,53 @@ sudo apt install -y i3 i3status picom feh rofi dmenu xfce4-screenshooter scrot i
 
     xed: Editor de texto ligero de Linux Mint (Mod + F1).
 
+
+# Instalacion de ZSH, nerd fonts icons y Oh My Zsh.
+
+-intalar zsh
+sudo apt install zsh
+
+- intalar nerd font
+
+Crear el directorio y descargar los archivos
+
+mkdir -p ~/.local/share/fonts/MesloLGS
+
+wget -P ~/.local/share/fonts/MesloLGS https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+
+wget -P ~/.local/share/fonts/MesloLGS https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+
+wget -P ~/.local/share/fonts/MesloLGS https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+
+wget -P ~/.local/share/fonts/MesloLGS https://github.com/romkatv/powerlevel10k-media/raw/master/
+MesloLGS%20NF%20Bold%20Italic.ttf
+
+-Refresca el sistema de fuentes para que reconozca los nuevos archivos
+
+fc-cache -fv
+
+-Aplica la fuente a la terminal actual (en el perfil predeterminado del perfil gnome-terminal / xed / mintty)
+
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")/ use-system-font false
+
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")/ font 'MesloLGS NF 11'
+
+- instalar Oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+- plugins
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    
+Establecer ZSH como la shell por defecto
+
+chsh -s $(which zsh)
+
+
+
+
+    
+
     
