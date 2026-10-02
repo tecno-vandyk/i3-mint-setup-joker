@@ -1,0 +1,319 @@
+# =============================================================================
+#  ██╗   ██╗ █████╗ ███╗   ██╗██████╗ ██╗   ██╗██╗  ██╗
+#  ██║   ██║██╔══██╗████╗  ██║██╔══██╗╚██╗ ██╔╝██║ ██╔╝
+#  ██║   ██║███████║██╔██╗ ██║██║  ██║ ╚████╔╝ █████═╝ 
+#  ╚██╗ ██╔╝██╔══██║██║╚██╗██║██║  ██║  ╚██╔╝  ██╔═██╗ 
+#   ╚████╔╝ ██║  ██║██║ ╚████║██████╔╝   ██║   ██║  ██╗
+#    ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝    ╚═╝   ╚═╝  ╚═╝
+# =============================================================================
+#  AUTOR:       VanDyk
+#  DESCRIPCIÓN: Archivo de configuración personal
+# -----------------------------------------------------------------------------
+#  REDES SOCIALES & CONTACTO:
+#   - YouTube:   https://youtube.com/@tu_canal
+#   - Twitch:    https://twitch.tv/tu_usuario
+#   - GitHub:    https://github.com/tu_usuario
+#   - X/Twitter: https://x.com/tu_usuario
+#   - Discord:   tu_usuario#0000
+# =============================================================================
+# ARCHIVO DE CONFIGURACIÓN DE I3WM (v4)
+# Documentación oficial: https://i3wm.org/docs/userguide.html
+# =============================================================================
+
+# Define la tecla SUPER/WINDOWS como la tecla principal ($mod)
+set $mod Mod4
+
+# Fuente predeterminada para los títulos de ventanas y barra de estado
+font pango:monospace 9
+
+# Autoinicio de aplicaciones integradas en el sistema (.desktop)
+exec --no-startup-id dex --autostart --environment i3
+
+# Gestión de bloqueo automático de pantalla al suspender el equipo
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# Applet de red para la bandeja del sistema (gestión de Wi-Fi y cable)
+exec --no-startup-id nm-applet
+
+# =============================================================================
+# INICIO AUTOMÁTICO DE HERRAMIENTAS VISUALES Y EFECTOS
+# =============================================================================
+
+# 1. Cargar fondo de pantalla con feh al iniciar i3
+exec_always --no-startup-id feh --bg-fill "/home/vandyk/Imágenes/joker.jpg"
+
+# 2. Iniciar Picom (Compositor para transparencias y esquinas redondeadas)
+exec_always --no-startup-id picom --corner-radius 12 -b
+
+# =============================================================================
+# ESPACIAMIENTO (GAPS), BORDES Y ESTILOS VISUALES
+# =============================================================================
+
+# --- ANCHO DE BORDES (AJUSTABLE) ---
+# Cambia el número '2' por el grosor en píxeles que prefieras (ej: pixel 1, pixel 3, pixel 4)
+default_border pixel 3
+default_floating_border pixel 3
+
+# Espaciado entre ventanas (gaps inner) y entre ventanas y pantalla (gaps outer)
+gaps inner 8
+gaps outer 4
+
+# Ocultar bordes de pantalla cuando solo hay una ventana abierta
+#hide_edge_borders smart
+
+
+# --- COLORES DE BORDES Y FOCO ---
+# Estructura: class                borde    fondo    texto    indicador  borde_hijo
+
+# Ventana Enfocada: 
+# Borde: Morado Oscuro (#4c1d95) | Indicador nueva ventana: Morado Claro (#a855f7)
+client.focused                   #4c1d95  #4c1d95  #ffffff  #a855f7    #4c1d95
+
+# Ventanas No Enfocadas (Gris oscuro disimulado)
+client.unfocused                 #2d2d2d  #2d2d2d  #888888  #2d2d2d    #2d2d2d
+
+# Ventana enfocada pero en otro monitor / contenedor
+client.focused_inactive          #3b0764  #3b0764  #cccccc  #2d2d2d    #3b0764
+
+# Ventana en estado urgente o alerta
+client.urgent                    #ef4444  #ef4444  #ffffff  #dc2626    #ef4444
+
+# Marcador de posición al arrastrar o dividir
+client.placeholder               #18181b  #18181b  #ffffff  #18181b    #18181b
+
+
+# =============================================================================
+# GUÍA RÁPIDA DE COLORES (Para editar en el futuro)
+# =============================================================================
+# Simplemente reemplaza los valores de arriba por cualquiera de estos códigos:
+#
+# Morado Oscuro (Borde con foco actual):      #4c1d95
+# Morado Claro / Neón (Indicador de ventana): #a855f7
+# Morado Violeta Intenso:                     #7e22ce
+# Morado Pastel:                              #c084fc
+# Púrpura Profundo:                           #3b0764
+# Gris Oscuro (Inactivo):                     #2d2d2d
+# Blanco (Texto principal):                   #ffffff
+# Rojo (Urgente / Alertas):                   #ef4444
+# =============================================================================
+
+
+# =============================================================================
+# CONTROLES DE AUDIO
+# =============================================================================
+
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# =============================================================================
+# COMPORTAMIENTO DEL RATÓN
+# =============================================================================
+
+# Arrastrar ventanas flotantes con Mod + Clic izquierdo
+floating_modifier $mod
+
+# Arrastrar ventanas en mosaico haciendo clic en su borde o título
+tiling_drag modifier titlebar
+
+# =============================================================================
+# ATAJOS Y LANZADORES DE APLICACIONES
+# =============================================================================
+
+# Abrir la terminal predeterminada (Mod + Enter)
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Editar este archivo de configuración en Xed como Superusuario (Mod + F12)
+bindsym $mod+F12 exec --no-startup-id pkexec xed ~/.config/i3/config
+
+# Cerrar la ventana que tiene el foco actual (Mod + Q)
+bindsym $mod+q kill
+
+# Abrir el lanzador de aplicaciones de ROFI (Mod + Shift + D)
+bindsym $mod+Shift+d exec --no-startup-id rofi -show drun
+
+# Abrir DMENU con colores personalizados (Mod + D)
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '#2d2d2d' -nf '#888888' -sb '#4c1d95' -sf '#ffffff'
+
+# Mostrar la lista de ventanas abiertas para saltar a ellas con ROFI (Mod + Tab)
+bindsym $mod+Tab exec --no-startup-id rofi -show window
+
+# Abrir el selector de temas LXAppearance (Mod + Shift + F9)
+bindsym $mod+Shift+F9 exec --no-startup-id lxappearance
+
+# Abrir la configuración de i3 en Sublime Text (Mod + Shift + F12)
+bindsym $mod+Shift+F12 exec --no-startup-id subl ~/.config/i3/config
+
+# Abrir la configuración de ZSH en Sublime Text (Mod + Shift + F11)
+bindsym $mod+Shift+F11 exec --no-startup-id subl ~/.zshrc
+
+# Abrir el reproductor de medios Celluloid (Mod + F5)
+bindsym $mod+F5 exec --no-startup-id celluloid
+
+# Abrir el reproductor de medios Celluloid (Mod + F5)
+#bindsym $mod+F5 exec --no-startup-id vlc
+
+# Abrir terminal ejecutando CAVA (Mod + F6)
+bindsym $mod+F6 exec --no-startup-id i3-sensible-terminal -e cava
+
+# Abrir terminal ejecutando CAVA (Mod + F7)
+bindsym $mod+F7 exec --no-startup-id i3-sensible-terminal -e cmatrix
+
+# Abrir el navegador Firefox (Mod + F2)
+bindsym $mod+F2 exec --no-startup-id firefox
+
+# Abrir xed con un documento nuevo en blanco (Mod + F1)
+bindsym $mod+F1 exec --no-startup-id xed
+
+# Abrir el Administrador de Archivos Thunar (Mod + B)
+bindsym $mod+b exec --no-startup-id thunar
+
+# Abrir el Gestor de Software de Linux Mint (Mod + F4)
+bindsym $mod+F4 exec --no-startup-id mintinstall
+
+# Abrir la Calculadora de Linux Mint (Mod + F3)
+bindsym $mod+F3 exec --no-startup-id gnome-calculator
+
+# Tomar captura de pantalla interactiva (Mod + Print)
+bindsym $mod+Print exec --no-startup-id xfce4-screenshooter
+
+# Captura directa sin ventanas a ~/Imágenes (Mod + Shift + Print)
+bindsym $mod+Shift+Print exec --no-startup-id scrot '%Y-%m-%d-%T-screenshot.png' -e 'mv $f ~/Imágenes/'
+
+# Bloquear la pantalla manualmente (Mod + L)
+bindsym $mod+l exec --no-startup-id i3lock -c 000000
+
+# Menú de apagado con Rofi (Mod + Shift + P)
+#bindsym $mod+Shift+p exec --no-startup-id rofi -show power-menu -modi "power-menu:echo -e 'Apagar\nReiniciar\nCerrar Sesión' | rofi #-dmenu"
+
+# Menú de apagado con Rofi (Mod + Shift + P)
+bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/powermenu.sh
+
+# =============================================================================
+# NAVEGACIÓN Y ENFOQUE DE VENTANAS
+# =============================================================================
+
+# Mover el foco usando las flechas del teclado
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# =============================================================================
+# MOVER VENTANAS DE POSICIÓN
+# =============================================================================
+
+# Mover la ventana enfocada usando Mod + Shift + Flechas
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# =============================================================================
+# DIVISIÓN Y ORGANIZACIÓN DE VENTANAS (LAYOUTS)
+# =============================================================================
+
+# Dividir la siguiente ventana horizontalmente (Mod + H)
+bindsym $mod+h split h
+
+# Dividir la siguiente ventana verticalmente (Mod + V)
+bindsym $mod+v split v
+
+# Activar/desactivar modo pantalla completa (Mod + F)
+bindsym $mod+f fullscreen toggle
+
+# Alternar entre modos de organización (Apilado / Pestañas / Dividido)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+Shift+w layout toggle split
+
+# Alternar ventana entre modo flotante y modo mosaico (Mod + Shift + Espacio)
+bindsym $mod+Shift+space floating toggle
+
+# Cambiar el foco entre ventanas flotantes y en mosaico (Mod + Espacio)
+bindsym $mod+space focus mode_toggle
+
+# Enfocar el contenedor padre
+bindsym $mod+a focus parent
+
+# =============================================================================
+# ESPACIOS DE TRABAJO (WORKSPACES)
+# =============================================================================
+
+# Declaración de variables para los escritorios
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Cambiar de escritorio (Mod + Número)
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Mover ventana enfocada a otro escritorio (Mod + Shift + Número)
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# =============================================================================
+# RECARGA Y GESTIÓN DEL SISTEMA
+# =============================================================================
+
+# Recargar la configuración sin reiniciar el entorno (Mod + Shift + C)
+bindsym $mod+Shift+c reload
+
+# Reiniciar i3 para aplicar cambios visuales guardando tus ventanas (Mod + Shift + R)
+bindsym $mod+Shift+r restart
+
+# =============================================================================
+# MODO DE REDIMENSIONADO DE VENTANAS
+# =============================================================================
+
+# Activa el modo de cambio de tamaño presionando Mod + R
+mode "resize" {
+        # Ajustar tamaño usando las flechas del teclado
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # Salir del modo redimensionado con Enter o Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+# Atajo para entrar al modo redimensionado (Mod + R)
+bindsym $mod+r mode "resize"
+
+# =============================================================================
+# BARRA DE ESTADO (i3bar)
+# =============================================================================
+
+bar {
+        status_command i3status
+
+}
