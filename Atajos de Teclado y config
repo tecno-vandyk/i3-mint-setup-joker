@@ -1,0 +1,134 @@
+⌨️ Guía Completa de Atajos de Teclado ($mod = Tecla Windows / Super)
+🔊 Controles de Multimedia y Audio
+
+    Tecla Subir Volumen: Aumenta el volumen general del sistema en un 10%.
+
+    Tecla Bajar Volumen: Disminuye el volumen general del sistema en un 10%.
+
+    Tecla Silenciar: Alterna entre silenciar y reactivar el audio principal.
+
+    Tecla Silenciar Micrófono: Activa o desactiva el micrófono.
+
+🚀 Lanzadores de Aplicaciones y Herramientas del Sistema
+
+    Mod + Enter: Abre la terminal predeterminada.
+
+    Mod + Q: Cierra de forma limpia la ventana que tiene el foco actual.
+
+    Mod + Shift + D: Abre el menú de aplicaciones interactivo con Rofi.
+
+    Mod + D: Abre el lanzador rápido de comandos Dmenu (con tema de colores morado).
+
+    Mod + Tab: Muestra una lista gráfica de todas las ventanas abiertas para saltar a cualquier escritorio rápidamente.
+
+    Mod + B: Abre el Administrador de Archivos (Thunar).
+
+    Mod + F1: Abre el editor de texto (Xed) con un documento en blanco.
+
+    Mod + F2: Inicia el navegador web (Firefox).
+
+    Mod + F3: Abre la calculadora del sistema (GNOME Calculator).
+
+    Mod + F4: Abre el Gestor de Software de Linux Mint (MintInstall).
+
+    Mod + F5: Abre el reproductor de video y multimedia (Celluloid).
+
+    Mod + F6: Abre una terminal ejecutando el visualizador de audio (CAVA).
+
+    Mod + F7: Abre una terminal ejecutando la animación de código (CMatrix).
+
+    Mod + Shift + F9: Abre el gestor de apariencia y temas GTK (LXAppearance).
+
+    Mod + F12: Edita este archivo de configuración en Xed con permisos de Administrador (pkexec).
+
+    Mod + Shift + F12: Abre este archivo de configuración en Sublime Text.
+
+    Mod + Shift + F11: Abre el archivo de configuración de ZSH (~/.zshrc) en Sublime Text.
+
+📸 Capturas de Pantalla y Bloqueo
+
+    Mod + Print: Captura de pantalla interactiva (permite seleccionar un área o ventana).
+
+    Mod + Shift + Print: Captura instantánea de toda la pantalla y la guarda directamente en ~/Imágenes/.
+
+    Mod + L: Bloquea la pantalla inmediatamente con fondo negro (i3lock).
+
+    Mod + Shift + P: Despliega el menú de energía para Apagar, Reiniciar o Cerrar Sesión mediante el script de Rofi.
+
+🔀 Organización, División y Control de Ventanas
+
+    Mod + Flechas (Izq / Der / Arriba / Abajo): Cambia el foco hacia la ventana en la dirección seleccionada.
+
+    Mod + Shift + Flechas: Mueve la ventana activa hacia la dirección seleccionada.
+
+    Mod + H: Prepara la siguiente división de ventana en sentido Horizontal.
+
+    Mod + V: Prepara la siguiente división de ventana en sentido Vertical.
+
+    Mod + F: Alterna la ventana actual entre modo pantalla completa y modo normal.
+
+    Mod + S: Cambia la distribución de las ventanas a modo Apilado (Stacking).
+
+    Mod + W: Cambia la distribución a modo Pestañas (Tabbed).
+
+    Mod + Shift + W: Alterna entre las distribuciones de pantalla dividida.
+
+    Mod + Shift + Espacio: Alterna la ventana actual entre modo flotante y mosaico.
+
+    Mod + Espacio: Cambia el foco entre las ventanas flotantes y las fijas en mosaico.
+
+    Mod + A: Selecciona o enfoca el contenedor padre.
+
+    Mod + Clic Izquierdo (Arrastrar): Mueve cualquier ventana flotante por la pantalla.
+
+    Mod + R: Entra en el Modo Redimensionar para ajustar el tamaño de las ventanas usando las flechas del teclado (Enter o Esc para salir).
+
+🖥️ Gestión de Escritorios (Workspaces) y Sistema
+
+    Mod + [1 al 0]: Cambia instantáneamente al espacio de trabajo (escritorio) número 1 al 10.
+
+    Mod + Shift + [1 al 0]: Envía la ventana seleccionada al espacio de trabajo indicado.
+
+    Mod + Shift + C: Recarga la configuración interna de i3 sin reiniciar el entorno.
+
+    Mod + Shift + R: Reinicia i3wm por completo (aplica cambios de estilo guardando la posición de tus ventanas).
+
+🛠️ Resumen de la Configuración del Sistema (config)
+
+Esta sección explica el propósito de cada bloque de código de tu configuración general de i3wm:
+
+    Definición de Variables y Fuentes:
+
+        Establece la tecla Super (Mod4) como el modificador global ($mod).
+
+        Configura la fuente del sistema en formato Pango (monospace 9) para mantener títulos y texto de la barra livianos y legibles.
+
+    Servicios de Inicio Automático (exec / exec_always):
+
+        dex: Garantiza que los servicios estándar del sistema .desktop se inicien automáticamente.
+
+        xss-lock: Escucha los eventos de suspensión del equipo para activar el bloqueo de pantalla i3lock automáticamente.
+
+        nm-applet: Carga el gestor de red en la bandeja del sistema (esencial para la gestión de redes Wi-Fi).
+
+        feh: Aplica de manera permanente el fondo de pantalla personalizado (joker.jpg) en cada inicio o reinicio de i3.
+
+        picom: Ejecuta el compositor de ventana en segundo plano activando bordes redondeados (radio de 12px) y transparencia suave.
+
+    Estilos Visuales, Colores y Bordes:
+
+        Bordes y Gaps: Define un grosor fijo de 3 píxeles para las ventanas y un espaciado personalizado (8px entre ventanas y 4px con los bordes de la pantalla).
+
+        Paleta Joker: Define los colores hex para los estados de las ventanas (foco activo en morado #4c1d95, indicador neón #a855f7, e inactivas en gris oscuro #2d2d2d).
+
+    Integración con Scripts Externos:
+
+        Contiene la llamada al script ejecutable ~/.config/i3/powermenu.sh para procesar el apagado del sistema de manera robusta sin errores sintácticos.
+
+    Modo Redimensionar (Resize Mode):
+
+        Crea un sub-modo dinámico de captura de teclas que permite ajustar el ancho y alto de las ventanas de 10 en 10 píxeles usando las flechas de dirección.
+
+    Barra de Estado (i3bar):
+
+        Declara el componente i3bar alimentado por los datos en vivo de i3status para mostrar métricas como uso de batería, red, memoria y hora en la parte inferior.
