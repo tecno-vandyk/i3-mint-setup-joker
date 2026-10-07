@@ -108,9 +108,19 @@ Establecer ZSH como la shell por defecto
 
 chsh -s $(which zsh)
 
+ # Copiar y pegar los archivos en las rutas corespondientes.
 
+ ~/.config/i3/powermenu.sh
 
+ejecular este comando para poder dar permisos a el scrip 
+chmod +x ~/.config/i3/powermenu.sh
 
-    
+ ~/.config/i3
+
+~/.zshrc
+ 
+~/imagenes/jocker.jpg
+
+ 
 
     
